@@ -18,7 +18,7 @@ class Vacansy:
         self.salary = salary
         self.area = area
         self.description = description
-        self.requirements = requirement
+        self.requirement = requirement
 
     def __str__(self):
         title = f"Вакансия - {self.title}"
