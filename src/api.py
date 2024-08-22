@@ -25,7 +25,7 @@ class HH(Parser):
     Полученный список приводит к необходимому виду, описанному в README.
     Класс является дочерним классом класса Parser."""
 
-    def __init__(self, filename="vacancies.json"):
+    def __init__(self, filename="vacs.json"):
         self.url = "https://api.hh.ru/vacancies"
         self.headers = {"User-Agent": "HH-User-Agent"}
         self.params = {"text": "", "page": 0, "per_page": 100}
@@ -36,6 +36,7 @@ class HH(Parser):
     def load_vacancies(self, keyword):
         """Метод загружает вакансии с сервиса HH. Формирует из загруженных данных список объектов
         вакансий с полями: название, ссылка, зарплата, описание, требования, место."""
+
         self.params["text"] = keyword
         while self.params.get("page") != 20:
             response = requests.get(self.url, headers=self.headers, params=self.params)
@@ -63,11 +64,11 @@ class HH(Parser):
             else:
                 requirement = "Не указано."
 
-           if vacancy["salary"]:
+            if vacancy["salary"]:
                 if vacancy["salary"]["from"]:
                     salary = vacancy["salary"]["from"]
-            else:
-                salary = 0
+                else:
+                    salary = 0
 
             if vacancy["area"]["name"]:
                 area = vacancy["area"]["name"]
