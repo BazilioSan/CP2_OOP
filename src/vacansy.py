@@ -21,11 +21,11 @@ class Vacansy:
         self.requirements = requirement
 
     def __str__(self):
-        title = f"Вакансия - {self.title}.format(self.title)"
-        salary = f"Зарплата - {self.salary}.format(self.salary)"
-        area = f"Местоположение - {self.area}.format(self.area)"
-        link = f"Ссылка на вакансию - {self.link}.format(self.link)"
-        return f"{title}, {salary}, {area}, {link}"
+        title = f"Вакансия - {self.title}"
+        salary = f"зарплата - {self.salary}"
+        area = f"местоположение - {self.area}"
+        link = f"ссылка на вакансию - {self.link}"
+        return f"{title}, {salary}, {area}, {link}."
 
     def vac_full(self):
         title = f"Вакансия - {self.title}"

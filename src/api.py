@@ -1,4 +1,3 @@
-
 import os
 from abc import ABC, abstractmethod
 
@@ -26,7 +25,7 @@ class HH(Parser):
     Полученный список приводит к необходимому виду, описанному в README.
     Класс является дочерним классом класса Parser."""
 
-    def __init__(self, filename="vacs.json"):
+    def __init__(self, filename="vacancies.json"):
         self.url = "https://api.hh.ru/vacancies"
         self.headers = {"User-Agent": "HH-User-Agent"}
         self.params = {"text": "", "page": 0, "per_page": 100}
@@ -43,32 +42,38 @@ class HH(Parser):
             vacancies = response.json()["items"]
             self.vacancies.extend(vacancies)
             self.params["page"] += 1
-        for vacancie in self.vacancies:
-            if vacancie["name"]:
-                title = vacancie["name"]
+        for vacancy in self.vacancies:
+            if vacancy["name"]:
+                title = vacancy["name"]
             else:
                 title = "Не указано."
-            if vacancie["alternate_url"]:
-                link = vacancie["alternate_url"]
+
+            if vacancy["alternate_url"]:
+                link = vacancy["alternate_url"]
             else:
                 link = "Не указано."
-            if vacancie["snippet"]["responsibility"]:
-                description = vacancie["snippet"]["responsibility"]
+
+            if vacancy["snippet"]["responsibility"]:
+                description = vacancy["snippet"]["responsibility"]
             else:
                 description = "Не указано."
-            if vacancie["snippet"]["requirement"]:
-                requirement = vacancie["snippet"]["requirement"]
+
+            if vacancy["snippet"]["requirement"]:
+                requirement = vacancy["snippet"]["requirement"]
             else:
                 requirement = "Не указано."
-            if vacancie["salary"]:
-                if vacancie["salary"]["from"]:
-                    salary = vacancie["salary"]["from"]
+
+           if vacancy["salary"]:
+                if vacancy["salary"]["from"]:
+                    salary = vacancy["salary"]["from"]
             else:
                 salary = 0
-            if vacancie["area"]["name"]:
-                area = vacancie["area"]["name"]
+
+            if vacancy["area"]["name"]:
+                area = vacancy["area"]["name"]
             else:
                 area = "Не указано."
+
             self.vacancies_short.append(
                 Vacansy(
                     title=title, link=link, description=description, requirement=requirement, salary=salary, area=area
