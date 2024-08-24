@@ -1,7 +1,3 @@
-from functools import total_ordering
-
-
-# @total_ordering
 class Vacansy:
     """Класс описания вакансии"""
 

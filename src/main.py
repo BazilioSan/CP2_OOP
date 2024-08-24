@@ -1,7 +1,7 @@
 from src.api import HH
+from src.file import VacansyFile
 from src.filter import VacansyFilter
 from src.list import VacansyList
-from src.file import VacansyFile
 
 
 def main_func():
@@ -41,13 +41,13 @@ def main_func():
     v_filter = VacansyFilter()
     v_filter.vacs = temp_vacs_list
     v_filter.filter_requirement(req_word)
-    print('Вакансии отфильтрованы по требованиям.')
+    print("Вакансии отфильтрованы по требованиям.")
     v_filter.filter_descriprtion(descr_word)
-    print('Вакансии отфильтрованы по описанию.')
+    print("Вакансии отфильтрованы по описанию.")
     v_filter.filter_area(area_word)
-    print('Вакансии отфильтрованы по местоположению.')
+    print("Вакансии отфильтрованы по местоположению.")
     v_filter.filter_salary(salary_num)
-    print('Вакансии отфильтрованы по зарплате.')
+    print("Вакансии отфильтрованы по зарплате.")
 
     # Сортируем вакансии по уменьшению зарплаты
     v_filter.sort_by_salary(True)
@@ -60,7 +60,7 @@ def main_func():
     vacs_list.import_vacansy_list(temp_vacs_list)
 
     top_n = int(input("Введите сколько топ-вакансий по зарплате Вам показать: "))
-    print(f'Вывожу топ-{top_n} вакансий.\n')
+    print(f"Вывожу топ-{top_n} вакансий.\n")
     print(vacs_list.top_vacs(top_n))
 
     # Производим запись списка вакансий в файл

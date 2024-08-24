@@ -69,6 +69,8 @@ class HH(Parser):
                     salary = vacancy["salary"]["from"]
                 else:
                     salary = 0
+            else:
+                salary = 0
 
             if vacancy["area"]["name"]:
                 area = vacancy["area"]["name"]

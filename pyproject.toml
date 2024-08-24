@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "cp1"
+name = "cp2"
 version = "0.1.0"
 description = ""
 authors = ["Alexandr <blix@list.ru>"]
@@ -17,6 +17,9 @@ pytest-cov = "^5.0.0"
 mypy = "^1.11.0"
 isort = "^5.13.2"
 
+
+[tool.poetry.group.dev.dependencies]
+pytest-cov = "^5.0.0"
 
 [build-system]
 requires = ["poetry-core"]
